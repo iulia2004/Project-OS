@@ -1,0 +1,2 @@
+Hunt: 2, Treasures: 1
+Hunt: 1, Treasures: 2
