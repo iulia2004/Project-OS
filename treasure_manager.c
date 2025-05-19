@@ -102,6 +102,7 @@ void list(const char *hunt_id) {
         printf("Coordinates: (%.2f, %.2f)\n", t.latitude, t.longitude);
         printf("Clue: %s\n", t.clue);
         printf("Value: %d\n", t.value);
+        printf("\n");
     }
     close(f);
 }
@@ -124,6 +125,7 @@ void view(const char *hunt_id, int id) {
             printf("Coordinates: (%.2f, %.2f)\n", t.latitude, t.longitude);
             printf("Clue: %s\n", t.clue);
             printf("Value: %d\n", t.value);
+            printf("\n");
             close(f);
             return;
         }
@@ -187,9 +189,20 @@ void remove_hunt(const char *hunt_id) {
     printf("Hunt removed.\n");
 }
 
+void print_menu() {
+    printf("Treasure Manager\n");
+    printf("Commands:\n");
+    printf("1. --add <hunt_id>\n");
+    printf("2. --list <hunt_id>\n");
+    printf("3. --view <hunt_id> <id>\n");
+    printf("4. --remove_treasure <hunt_id> <id>\n");
+    printf("5. --remove_hunt <hunt_id>\n");
+}
+
 int main(int argc, char *argv[]) {
+
     if (argc < 3) {
-        fprintf(stderr, "Usage: %s <command> <hunt_id> [<id>]\n", argv[0]);
+        print_menu();
         return 1;
     }
 
@@ -208,6 +221,7 @@ int main(int argc, char *argv[]) {
         remove_hunt(hunt_id);
     } else {
         fprintf(stderr, "Invalid command\n");
+        print_menu();
         return 1;
     }
 
